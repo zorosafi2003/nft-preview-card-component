@@ -1,0 +1,161 @@
+@import url('https://fonts.google.com/specimen/Outfit');
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --color-soft-blue: hsl(215, 51%, 70%);
+    --color-cyan: hsl(178, 100%, 50%);
+    // (main BG)
+    --color-very-dark-blue-main: hsl(217, 54%, 11%);
+    //(card BG)
+    --color-very-dark-blue-card: hsl(216, 50%, 16%);
+    //(line)
+    --color-very-dark-blue-line: hsl(215, 32%, 27%);
+    --color-white: hsl(0, 0%, 100%);
+}
+
+body {
+    min-height: 100vh;
+    font-family: 'Outfit', sans-serif;
+    font-size: 18px;
+    background-color: var(--color-very-dark-blue-main);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+section.card {
+    height: 596px;
+    width: 350px;
+    padding: 24px;
+    background-color: var(--color-very-dark-blue-card);
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+
+    .card-img {
+        position: relative;
+        background-image: url('images/image-equilibrium.jpg');
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover;
+        border-radius: 0.6rem;
+        height: 302px;
+        z-index: 1;
+
+        &::after {
+            content: "";
+            position: absolute;
+            width: 100%;
+            height: auto;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: var(--color-cyan);
+            border-radius: inherit;
+            z-index: 2;
+            opacity: 0;
+            transition: all 0.5s;
+        }
+
+        &::before {
+            content: "";
+            position: absolute;
+            width: 100%;
+            height: auto;
+            top: 50%;
+            left: 50%;
+            right: 0;
+            bottom: 0;
+            transform: translate(-50%, -50%);
+            background-image: url('images/icon-view.svg');
+            background-repeat: no-repeat;
+            background-position: center;
+            z-index: 3;
+            opacity: 0;
+            transition: all 0.5s;
+        }
+
+
+        &:hover::after,
+        &:hover::before {
+            opacity: .6;
+        }
+    }
+
+}
+
+.card-body {
+    h1 {
+        font-size: 22px;
+        font-weight: 700;
+        color: var(--color-white);
+    }
+
+    h3 {
+        font-size: 18px;
+        font-weight: 200;
+        line-height: 26px;
+        color: var(--color-soft-blue);
+        margin-top: 16px;
+    }
+
+    .nft-details {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 24px;
+        font-size: 16px;
+
+        .nft-details--price {
+            color: var(--color-cyan);
+            font-weight: bold;
+        }
+
+        .nft-details--date {
+            color: var(--color-soft-blue);
+        }
+    }
+}
+
+.card-footer {
+    border-top: 1px solid var(--color-very-dark-blue-line);
+    display: flex;
+    align-items: center;
+    padding-top: 16px;
+
+    img {
+        width: 33px;
+        height: 33px;
+        border-radius: 50%;
+        margin-right: 16px;
+        border: 1px solid white;
+    }
+
+    span {
+        line-height: 33px;
+        color: var(--color-soft-blue);
+        font-size: 16px;
+
+        a {
+            color: var(--color-white);
+            text-decoration: none;
+
+            &:hover{
+                color: var(--color-cyan); 
+            }
+        }
+    }
+}
+
+@media only screen and (max-width:380) {
+    section.card {
+        height: 543px;
+        width: 327px;
+    }
+}
